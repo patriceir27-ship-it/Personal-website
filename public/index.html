@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patrice IRADUKUNDA | Data Scientist & ML Engineer</title>
+    <meta name="description" content="Professional portfolio of Patrice IRADUKUNDA - Data Scientist, Machine Learning Engineer, and AI Innovator">
+    
+    <!-- Open Graph / Social Media Meta Tags -->
+    <meta property="og:title" content="Patrice IRADUKUNDA | Data Scientist">
+    <meta property="og:description" content="Turning raw data into intelligent systems, high-impact insights, and real-world solutions">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://patriceiradukunda.netlify.app">
+    
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700&family=Space+Grotesk:wght@300;400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Three.js and related libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.min.js"></script>
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📊</text></svg>">
+</head>
+<body>
+    <!-- 3D Background Canvas -->
+    <div id="threejs-background"></div>
+    
+    <!-- Navigation -->
+    <nav class="nav-3d">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <span class="logo-text">PI</span>
+                <span class="logo-name">Patrice IRADUKUNDA</span>
+            </div>
+            <div class="nav-links">
+                <a href="#home" class="nav-link active" data-section="home">Home</a>
+                <a href="#about" class="nav-link" data-section="about">About</a>
+                <a href="#experience" class="nav-link" data-section="experience">Experience</a>
+                <a href="#skills" class="nav-link" data-section="skills">Skills</a>
+                <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+                <a href="#contact" class="nav-link" data-section="contact">Contact</a>
+            </div>
+            <div class="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Home Section -->
+        <section id="home" class="section active">
+            <div class="home-container">
+                <div class="home-left">
+                    <div class="floating-badge">Data Scientist & ML Engineer</div>
+                    <h1 class="home-title">
+                        <span class="title-line">Hi, I'm</span>
+                        <span class="title-name">Patrice <span class="highlight">IRADUKUNDA</span></span>
+                    </h1>
+                    <p class="home-subtitle">
+                        Turning raw data into <span class="highlight">intelligent systems</span>, 
+                        high-impact insights, and real-world solutions.
+                    </p>
+                    <p class="home-description">
+                        Data Scientist with a solid foundation in statistics, data analysis, and machine learning. 
+                        Passionate about using data to solve real-world challenges and support meaningful decision-making.
+                    </p>
+                    <div class="home-buttons">
+                        <a href="#contact" class="btn-primary">
+                            <i class="fas fa-paper-plane"></i> Get In Touch
+                        </a>
+                        <a href="#projects" class="btn-secondary">
+                            <i class="fas fa-code"></i> View My Work
+                        </a>
+                    </div>
+                    <div class="home-social">
+                        <a href="https://github.com/patriceir27-ship-it" target="_blank" class="social-icon">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/in/patrice-iradukunda-74931827a/" target="_blank" class="social-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                        <a href="mailto:patriceir27@gmail.com" class="social-icon">
+                            <i class="fas fa-envelope"></i>
+                        </a>
+                        <a href="#contact" class="social-icon">
+                            <i class="fas fa-file-pdf"></i>
+                        </a>
+                    </div>
+                </div>
+                <div class="home-right">
+                    <div class="floating-shapes">
+                        <div class="shape cube" data-depth="0.2"></div>
+                        <div class="shape sphere" data-depth="0.3"></div>
+                        <div class="shape pyramid" data-depth="0.1"></div>
+                    </div>
+                    <div class="profile-3d">
+                        <div class="avatar-placeholder">
+                            <i class="fas fa-user-astronaut"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section">
+            <div class="section-header">
+                <h2 class="section-title">About Me</h2>
+                <p class="section-subtitle">My Journey & Philosophy</p>
+            </div>
+            <div class="about-container">
+                <div class="about-left">
+                    <div class="about-card">
+                        <div class="about-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-chart-line"></i>
+                            </div>
+                        </div>
+                        <div class="about-quote">
+                            <p>"Live intentionally, learn constantly, and impact positively."</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="about-right">
+                    <div class="about-content">
+                        <p class="about-text">
+                            I am a passionate Data Scientist and Machine Learning Engineer with expertise in 
+                            statistical analysis, predictive modeling, and big data processing. Currently pursuing 
+                            my Master's in Mathematical Science with a specialization in Data Science at AIMS Rwanda.
+                        </p>
+                        
+                        <div class="about-details">
+                            <div class="detail-item">
+                                <i class="fas fa-graduation-cap"></i>
+                                <div>
+                                    <h4>Education</h4>
+                                    <p>M.Sc. Data Science (AIMS Rwanda) | B.Sc. Statistics (First Class Honors)</p>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-briefcase"></i>
+                                <div>
+                                    <h4>Experience</h4>
+                                    <p>Data Science Intern @ Prodigy InfoTech | Research Assistant | Data Analyst</p>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <div>
+                                    <h4>Location</h4>
+                                    <p>Rwanda | Available for Remote Opportunities</p>
+                                </div>
+                            </div>
+                            <div class="detail-item">
+                                <i class="fas fa-certificate"></i>
+                                <div>
+                                    <h4>Publication</h4>
+                                    <p>"Assessing The Effects Of Climate Change On Agriculture Productivity Across Rwanda"</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="interest-areas">
+                            <h3>Interest Areas</h3>
+                            <div class="interests-grid">
+                                <span class="interest-tag">Machine Learning</span>
+                                <span class="interest-tag">Big Data Processing</span>
+                                <span class="interest-tag">Telecom Analytics</span>
+                                <span class="interest-tag">Digital Finance</span>
+                                <span class="interest-tag">Data Visualization</span>
+                                <span class="interest-tag">AI for Social Impact</span>
+                                <span class="interest-tag">Public Sector Analytics</span>
+                                <span class="interest-tag">Digital Transformation</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Experience & Education</h2>
+                <p class="section-subtitle">Professional Journey</p>
+            </div>
+            
+            <div class="timeline-3d">
+                <div class="timeline-track"></div>
+                
+                <!-- Experience Items -->
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Dec 2025 - Present</div>
+                        <h3 class="timeline-title">Data Scientist Intern</h3>
+                        <h4 class="timeline-company">Prodigy InfoTech | Remote</h4>
+                        <ul class="timeline-details">
+                            <li>Developed end-to-end data science and ML projects</li>
+                            <li>Built and evaluated ML models for classification/prediction</li>
+                            <li>Created clear visualizations and reports</li>
+                            <li>Strengthened skills in Python, SQL, and data storytelling</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Dec 2024 - Aug 2025</div>
+                        <h3 class="timeline-title">Tutorial Assistant</h3>
+                        <h4 class="timeline-company">INES Ruhengeri</h4>
+                        <ul class="timeline-details">
+                            <li>Supported lecturers in lesson preparation</li>
+                            <li>Assisted in classroom instruction</li>
+                            <li>Monitored student progress</li>
+                            <li>Ensured child protection standards</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">May - Sept 2024</div>
+                        <h3 class="timeline-title">Internet Researcher & Content Creator</h3>
+                        <h4 class="timeline-company">Kawah Coffee Ltd, UK (Remote)</h4>
+                        <ul class="timeline-details">
+                            <li>Designed data collection methods</li>
+                            <li>Conducted online market research</li>
+                            <li>Created engaging content</li>
+                            <li>Monitored AI tools implementation</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="timeline-item right">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Sept 2025 - Jun 2026</div>
+                        <h3 class="timeline-title">Master's in Data Science</h3>
+                        <h4 class="timeline-company">AIMS Rwanda</h4>
+                        <p>Specialization in Mathematical Science for Data Science</p>
+                    </div>
+                </div>
+                
+                <div class="timeline-item left">
+                    <div class="timeline-content">
+                        <div class="timeline-date">Nov 2020 - Oct 2024</div>
+                        <h3 class="timeline-title">B.Sc. Statistics</h3>
+                        <h4 class="timeline-company">INES Ruhengeri</h4>
+                        <p>First Class Honors in Statistics Applied to Economy</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Technical Skills</h2>
+                <p class="section-subtitle">Tools & Technologies</p>
+            </div>
+            
+            <div class="skills-container">
+                <div class="skills-category">
+                    <h3 class="category-title">
+                        <i class="fas fa-code"></i> Programming
+                    </h3>
+                    <div class="skills-grid">
+                        <div class="skill-item" data-skill="95">
+                            <div class="skill-info">
+                                <span class="skill-name">Python</span>
+                                <span class="skill-percent">95%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="90">
+                            <div class="skill-info">
+                                <span class="skill-name">SQL</span>
+                                <span class="skill-percent">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="85">
+                            <div class="skill-info">
+                                <span class="skill-name">R Programming</span>
+                                <span class="skill-percent">85%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress"></div>
+                            </div>
+                        </div>
+                        <div class="skill-item" data-skill="90">
+                            <div class="skill-info">
+                                <span class="skill-name">PySpark</span>
+                                <span class="skill-percent">90%</span>
+                            </div>
+                            <div class="skill-bar">
+                                <div class="skill-progress"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skills-category">
+                    <h3 class="category-title">
+                        <i class="fas fa-brain"></i> Machine Learning
+                    </h3>
+                    <div class="skills-tags">
+                        <span class="skill-tag">Supervised Learning</span>
+                        <span class="skill-tag">Unsupervised Learning</span>
+                        <span class="skill-tag">Statistical Regression</span>
+                        <span class="skill-tag">Classification</span>
+                        <span class="skill-tag">Clustering</span>
+                        <span class="skill-tag">Dimensionality Reduction</span>
+                        <span class="skill-tag">Time-series Analysis</span>
+                        <span class="skill-tag">Optimization</span>
+                    </div>
+                </div>
+                
+                <div class="skills-category">
+                    <h3 class="category-title">
+                        <i class="fas fa-tools"></i> Tools & Technologies
+                    </h3>
+                    <div class="tools-grid">
+                        <div class="tool-item">
+                            <i class="fab fa-git-alt"></i>
+                            <span>Git/GitHub</span>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Power BI</span>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fas fa-chart-area"></i>
+                            <span>Tableau</span>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fas fa-terminal"></i>
+                            <span>Linux/Bash</span>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fas fa-database"></i>
+                            <span>ETL Pipelines</span>
+                        </div>
+                        <div class="tool-item">
+                            <i class="fas fa-cloud"></i>
+                            <span>AWS/GCP</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="skills-category">
+                    <h3 class="category-title">
+                        <i class="fas fa-users"></i> Soft Skills
+                    </h3>
+                    <div class="soft-skills">
+                        <div class="soft-skill">
+                            <div class="soft-skill-name">Analytical Thinking</div>
+                            <div class="soft-skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                            </div>
+                        </div>
+                        <div class="soft-skill">
+                            <div class="soft-skill-name">Problem Solving</div>
+                            <div class="soft-skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                            </div>
+                        </div>
+                        <div class="soft-skill">
+                            <div class="soft-skill-name">Communication</div>
+                            <div class="soft-skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                        <div class="soft-skill">
+                            <div class="soft-skill-name">Collaboration</div>
+                            <div class="soft-skill-dots">
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot active"></span>
+                                <span class="dot"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Projects & Publications</h2>
+                <p class="section-subtitle">Data Science Work</p>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- Publication Project -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <div class="project-badge">Publication</div>
+                    </div>
+                    <h3 class="project-title">Climate Change & Agriculture Productivity</h3>
+                    <p class="project-description">
+                        Research paper assessing the effects of climate change on agriculture productivity 
+                        across Rwanda's provinces and Kigali City.
+                    </p>
+                    <div class="project-tech">
+                        <span>R</span>
+                        <span>Statistical Analysis</span>
+                        <span>Data Visualization</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://doi.org/10.16929/ajas/2024.1553.282" target="_blank" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> View Paper
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- ML Project -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="project-badge">Machine Learning</div>
+                    </div>
+                    <h3 class="project-title">Large-Scale Education Analytics Platform</h3>
+                    <p class="project-description">
+                        Building a scalable analytics platform using Python, Spark, and MLlib to analyze 
+                        educational data and provide insights.
+                    </p>
+                    <div class="project-tech">
+                        <span>Python</span>
+                        <span>PySpark</span>
+                        <span>MLlib</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/patriceir27-ship-it" target="_blank" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Data Analysis Project -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <div class="project-badge">Data Analysis</div>
+                    </div>
+                    <h3 class="project-title">Telecom Analytics Dashboard</h3>
+                    <p class="project-description">
+                        Interactive dashboard for telecom analytics including churn prediction, 
+                        customer segmentation, and MoMo transaction insights.
+                    </p>
+                    <div class="project-tech">
+                        <span>Power BI</span>
+                        <span>Python</span>
+                        <span>SQL</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <i class="fas fa-external-link-alt"></i> View Demo
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- ETL Project -->
+                <div class="project-card">
+                    <div class="project-header">
+                        <div class="project-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <div class="project-badge">ETL Pipeline</div>
+                    </div>
+                    <h3 class="project-title">Big Data Processing Pipeline</h3>
+                    <p class="project-description">
+                        End-to-end ETL pipeline for processing large-scale data using PySpark, 
+                        with data cleaning, transformation, and loading.
+                    </p>
+                    <div class="project-tech">
+                        <span>PySpark</span>
+                        <span>ETL</span>
+                        <span>Data Engineering</span>
+                    </div>
+                    <div class="project-links">
+                        <a href="#" class="project-link">
+                            <i class="fab fa-github"></i> View Code
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section">
+            <div class="section-header">
+                <h2 class="section-title">Get In Touch</h2>
+                <p class="section-subtitle">Let's Collaborate</p>
+            </div>
+            
+            <div class="contact-container">
+                <div class="contact-info">
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Email</h4>
+                            <p>patriceir27@gmail.com</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>Phone</h4>
+                            <p>+250 788 850 439</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fab fa-linkedin"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>LinkedIn</h4>
+                            <p>/in/patrice-iradukunda</p>
+                        </div>
+                    </div>
+                    
+                    <div class="info-card">
+                        <div class="info-icon">
+                            <i class="fab fa-github"></i>
+                        </div>
+                        <div class="info-content">
+                            <h4>GitHub</h4>
+                            <p>@patriceir27-ship-it</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-availability">
+                        <h4>Availability</h4>
+                        <p>Open to full-time opportunities, freelance projects, and research collaborations.</p>
+                        <div class="availability-status">
+                            <span class="status-dot active"></span>
+                            <span>Available for new opportunities</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form-container">
+                    <form id="contact-form" class="contact-form">
+                        <h3 class="form-title">Send me a message</h3>
+                        
+                        <div class="form-group">
+                            <input type="text" id="name" name="name" required>
+                            <label for="name">Your Name</label>
+                            <div class="form-line"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="email" id="email" name="email" required>
+                            <label for="email">Your Email</label>
+                            <div class="form-line"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <input type="text" id="subject" name="subject" required>
+                            <label for="subject">Subject</label>
+                            <div class="form-line"></div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <textarea id="message" name="message" rows="4" required></textarea>
+                            <label for="message">Your Message</label>
+                            <div class="form-line"></div>
+                        </div>
+                        
+                        <button type="submit" class="btn-submit">
+                            <i class="fas fa-paper-plane"></i> Send Message
+                        </button>
+                        
+                        <div id="form-message" class="form-message"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer-3d">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <span class="logo-text">PI</span>
+                <span class="logo-name">Patrice IRADUKUNDA</span>
+            </div>
+            
+            <p class="footer-quote">
+                "Turning complexity into clarity through intelligent systems."
+            </p>
+            
+            <div class="footer-social">
+                <a href="https://github.com/patriceir27-ship-it" target="_blank" class="footer-icon">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/patrice-iradukunda-74931827a/" target="_blank" class="footer-icon">
+                    <i class="fab fa-linkedin"></i>
+                </a>
+                <a href="https://twitter.com" target="_blank" class="footer-icon">
+                    <i class="fab fa-twitter"></i>
+                </a>
+                <a href="mailto:patriceir27@gmail.com" class="footer-icon">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+            
+            <div class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#about">About</a>
+                <a href="#experience">Experience</a>
+                <a href="#skills">Skills</a>
+                <a href="#projects">Projects</a>
+                <a href="#contact">Contact</a>
+            </div>
+            
+            <p class="footer-copyright">
+                &copy; 2026 Patrice IRADUKUNDA. All rights reserved.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JavaScript Files -->
+    <script src="js/threejs-setup.js"></script>
+    <script src="js/animations.js"></script>
+    <script src="js/form-handler.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
