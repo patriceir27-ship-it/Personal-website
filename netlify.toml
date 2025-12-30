@@ -1,0 +1,48 @@
+[build]
+  publish = "public"
+  functions = "src"
+
+[build.environment]
+  # Set your Node.js version
+  NODE_VERSION = "18"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+# Security headers
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "nosniff"
+    X-XSS-Protection = "1; mode=block"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Content-Security-Policy = """
+      default-src 'self';
+      script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net;
+      style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com;
+      font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com;
+      img-src 'self' data: https:;
+      connect-src 'self' https://api.netlify.com;
+    """
+
+# Environment variables (set these in Netlify dashboard)
+[context.production.environment]
+  SMTP_HOST = "smtp.gmail.com"
+  SMTP_PORT = "587"
+  SMTP_SECURE = "false"
+  SMTP_USER = "your-email@gmail.com"
+  SMTP_PASS = "your-app-password"
+  SMTP_FROM = "portfolio@patriceiradukunda.com"
+  CONTACT_EMAIL = "patriceir27@gmail.com"
+
+[context.deploy-preview.environment]
+  SMTP_HOST = "smtp.gmail.com"
+  SMTP_PORT = "587"
+  SMTP_SECURE = "false"
+  SMTP_USER = "your-email@gmail.com"
+  SMTP_PASS = "your-app-password"
+  SMTP_FROM = "portfolio-preview@patriceiradukunda.com"
+  CONTACT_EMAIL = "patriceir27@gmail.com"
