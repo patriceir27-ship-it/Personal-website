@@ -1,0 +1,32 @@
+{
+  "name": "patrice-iradukunda-portfolio",
+  "version": "1.0.0",
+  "description": "Professional 3D portfolio website for Patrice IRADUKUNDA",
+  "main": "public/index.html",
+  "scripts": {
+    "dev": "netlify dev",
+    "build": "echo 'Build complete'",
+    "deploy": "netlify deploy --prod",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.7",
+    "three": "^0.128.0"
+  },
+  "devDependencies": {
+    "@netlify/functions": "^1.0.0",
+    "netlify-cli": "^12.0.0"
+  },
+  "keywords": [
+    "portfolio",
+    "3d",
+    "data-science",
+    "machine-learning",
+    "webgl"
+  ],
+  "author": "Patrice IRADUKUNDA",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
