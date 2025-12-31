@@ -1,13 +1,27 @@
-// Contact form handler with Netlify Functions
+// Contact form handler with Netlify Forms
 class ContactForm {
     constructor() {
         this.form = document.getElementById('contact-form');
         this.formMessage = document.getElementById('form-message');
+        this.submitButton = this.form ? this.form.querySelector('.btn-submit') : null;
+        this.originalButtonText = this.submitButton ? this.submitButton.innerHTML : '';
+        
         this.init();
     }
     
     init() {
         if (!this.form) return;
+        
+        // Set up Netlify Forms
+        this.form.setAttribute('netlify', '');
+        this.form.setAttribute('data-netlify', 'true');
+        
+        // Add honeypot field for spam protection
+        const honeypot = document.createElement('input');
+        honeypot.type = 'hidden';
+        honeypot.name = 'bot-field';
+        honeypot.style.display = 'none';
+        this.form.appendChild(honeypot);
         
         this.form.addEventListener('submit', (e) => {
             e.preventDefault();
@@ -101,27 +115,32 @@ class ContactForm {
             return;
         }
         
-        // Get form data
-        const formData = new FormData(this.form);
-        const data = Object.fromEntries(formData);
-        
         // Show loading state
-        const submitButton = this.form.querySelector('.btn-submit');
-        const originalText = submitButton.innerHTML;
-        submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-        submitButton.disabled = true;
+        this.submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        this.submitButton.disabled = true;
         
         try {
-            // Send to Netlify Function
-            const response = await fetch('/.netlify/functions/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(data)
+            // Prepare form data
+            const formData = new FormData(this.form);
+            
+            // Add additional form data for Netlify
+            const additionalData = {
+                'form-name': 'contact',
+                'bot-field': ''
+            };
+            
+            Object.keys(additionalData).forEach(key => {
+                formData.append(key, additionalData[key]);
             });
             
-            const result = await response.json();
+            // Submit to Netlify Forms
+            const response = await fetch('/', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            });
             
             if (response.ok) {
                 this.showFormMessage('Message sent successfully! I\'ll get back to you soon.', 'success');
@@ -129,16 +148,19 @@ class ContactForm {
                 
                 // Trigger confetti animation
                 this.triggerConfetti();
+                
+                // Log to analytics (optional)
+                console.log('Contact form submitted successfully');
             } else {
-                throw new Error(result.error || 'Failed to send message');
+                throw new Error('Failed to send message. Please try again.');
             }
         } catch (error) {
             console.error('Form submission error:', error);
             this.showFormMessage(error.message || 'Failed to send message. Please try again.', 'error');
         } finally {
             // Reset button state
-            submitButton.innerHTML = originalText;
-            submitButton.disabled = false;
+            this.submitButton.innerHTML = this.originalButtonText;
+            this.submitButton.disabled = false;
         }
     }
     
@@ -149,16 +171,18 @@ class ContactForm {
         this.formMessage.className = `form-message ${type}`;
         this.formMessage.style.display = 'block';
         
-        // Auto-hide after 5 seconds
-        setTimeout(() => {
-            this.formMessage.style.display = 'none';
-        }, 5000);
+        // Auto-hide after 5 seconds for success messages
+        if (type === 'success') {
+            setTimeout(() => {
+                this.formMessage.style.display = 'none';
+            }, 5000);
+        }
     }
     
     triggerConfetti() {
         // Create confetti particles
         const colors = ['#667eea', '#764ba2', '#00dbde', '#fc00ff'];
-        const particleCount = 150;
+        const particleCount = 100;
         
         for (let i = 0; i < particleCount; i++) {
             const confetti = document.createElement('div');
@@ -191,7 +215,7 @@ class ContactForm {
             document.body.appendChild(confetti);
             
             // Animate confetti
-            confetti.animate([
+            const animation = confetti.animate([
                 { 
                     transform: `translate(0, 0) rotate(${rotation}deg)`,
                     opacity: 0.8 
@@ -203,9 +227,11 @@ class ContactForm {
             ], {
                 duration: duration * 1000,
                 delay: delay * 1000,
-                easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)',
-                fill: 'forwards'
-            }).onfinish = () => confetti.remove();
+                easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
+            });
+            
+            // Remove after animation
+            animation.onfinish = () => confetti.remove();
         }
     }
 }
@@ -213,4 +239,59 @@ class ContactForm {
 // Initialize form handler when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     const contactForm = new ContactForm();
+    
+    // Add click particles to all buttons
+    document.querySelectorAll('.btn-primary, .btn-secondary, .btn-tertiary, .project-link').forEach(button => {
+        button.addEventListener('click', (e) => {
+            createClickParticles(e);
+        });
+    });
+    
+    function createClickParticles(e) {
+        const rect = e.target.getBoundingClientRect();
+        const x = rect.left + rect.width / 2;
+        const y = rect.top + rect.height / 2;
+        const colors = ['#667eea', '#764ba2', '#00dbde', '#fc00ff'];
+        
+        for (let i = 0; i < 20; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'click-particle';
+            
+            const size = Math.random() * 8 + 3;
+            const color = colors[Math.floor(Math.random() * colors.length)];
+            const angle = Math.random() * Math.PI * 2;
+            const speed = 2 + Math.random() * 3;
+            const distance = 50 + Math.random() * 100;
+            
+            particle.style.position = 'fixed';
+            particle.style.left = `${x}px`;
+            particle.style.top = `${y}px`;
+            particle.style.width = `${size}px`;
+            particle.style.height = `${size}px`;
+            particle.style.background = color;
+            particle.style.borderRadius = '50%';
+            particle.style.pointerEvents = 'none';
+            particle.style.zIndex = '1000';
+            particle.style.opacity = '0.8';
+            
+            document.body.appendChild(particle);
+            
+            let posX = 0, posY = 0;
+            const animation = setInterval(() => {
+                posX += Math.cos(angle) * speed;
+                posY += Math.sin(angle) * speed;
+                
+                particle.style.left = `${x + posX}px`;
+                particle.style.top = `${y + posY}px`;
+                particle.style.opacity = parseFloat(particle.style.opacity) - 0.02;
+                
+                if (parseFloat(particle.style.opacity) <= 0 || 
+                    Math.abs(posX) > distance || 
+                    Math.abs(posY) > distance) {
+                    clearInterval(animation);
+                    particle.remove();
+                }
+            }, 16);
+        }
+    }
 });
