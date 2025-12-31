@@ -10,7 +10,7 @@
     <meta property="og:title" content="Patrice IRADUKUNDA | Data Scientist">
     <meta property="og:description" content="Turning raw data into intelligent systems, high-impact insights, and real-world solutions">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://patriceiradukunda.netlify.app">
+    <meta property="og:url" content="https://patriceiradukunda.com">
     
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -243,7 +243,7 @@
                                 <li>Supported lecturers in lesson preparation</li>
                                 <li>Assisted in classroom instruction</li>
                                 <li>Monitored student progress</li>
-                                <li>Ensured child protection standards</li>
+                                <li>Ensured learners protection standards</li>
                             </ul>
                         </div>
                     </div>
@@ -576,7 +576,7 @@
                     </p>
                     <div class="project-tech">
                         <span>Python</span>
-                                        <span>Seaborn</span>
+                        <span>Seaborn</span>
                         <span>Matplotlib</span>
                     </div>
                     <div class="project-links">
@@ -698,38 +698,35 @@
                 </div>
                 
                 <div class="contact-form-container">
-                    <!-- Simple Netlify Form -->
-                    <form name="contact" method="POST" data-netlify="true" class="contact-form">
-                        <input type="hidden" name="form-name" value="contact">
+                    <!-- Formspree Form for Cloudflare Pages -->
+                    <form action="https://formspree.io/f/mpzvrgjo" method="POST" class="contact-form" id="contact-form">
+                        <input type="hidden" name="_subject" value="New Message from Portfolio - Patrice IRADUKUNDA">
+                        <input type="text" name="_gotcha" style="display:none">
                         
                         <h3 class="form-title">Send me a message</h3>
                         
                         <div class="form-group">
-                            <input type="text" id="name" name="name" required placeholder=" ">
+                            <input type="text" id="name" name="name" required>
                             <label for="name">Your Name</label>
                             <div class="form-line"></div>
                         </div>
                         
                         <div class="form-group">
-                            <input type="email" id="email" name="email" required placeholder=" ">
+                            <input type="email" id="email" name="email" required>
                             <label for="email">Your Email</label>
                             <div class="form-line"></div>
                         </div>
                         
                         <div class="form-group">
-                            <input type="text" id="subject" name="subject" required placeholder=" ">
+                            <input type="text" id="subject" name="subject" required>
                             <label for="subject">Subject</label>
                             <div class="form-line"></div>
                         </div>
                         
                         <div class="form-group">
-                            <textarea id="message" name="message" rows="4" required placeholder=" "></textarea>
+                            <textarea id="message" name="message" rows="4" required></textarea>
                             <label for="message">Your Message</label>
                             <div class="form-line"></div>
-                        </div>
-                        
-                        <div style="position: absolute; left: -5000px;" aria-hidden="true">
-                            <input type="text" name="bot-field" tabindex="-1">
                         </div>
                         
                         <button type="submit" class="btn-submit">
@@ -778,6 +775,8 @@
             
             <p class="footer-copyright">
                 &copy; 2026 Patrice IRADUKUNDA. All rights reserved.
+                <br>
+                <small>Hosted on Cloudflare Pages</small>
             </p>
         </div>
     </footer>
@@ -786,14 +785,22 @@
     <script src="js/threejs-setup.js"></script>
     <script src="js/animations.js"></script>
     <script src="js/main.js"></script>
+    
+    <!-- Cloudflare Web Analytics -->
+    <script defer src='https://static.cloudflareinsights.com/beacon.min.js' 
+            data-cf-beacon='{"token": "b24767dff66c49c3b56bf0684d851f3e"}'></script>
+    
     <script>
         // Profile image handling
         function showPlaceholder() {
             const img = document.getElementById('profile-img');
-            const placeholder = document.createElement('div');
-            placeholder.className = 'avatar-placeholder';
-            placeholder.innerHTML = '<i class="fas fa-user-astronaut"></i>';
-            img.replaceWith(placeholder);
+            if (img && img.parentNode) {
+                const placeholder = document.createElement('div');
+                placeholder.className = 'avatar-placeholder';
+                placeholder.innerHTML = '<i class="fas fa-user-astronaut"></i>';
+                img.parentNode.appendChild(placeholder);
+                img.style.display = 'none';
+            }
         }
         
         function showAboutPlaceholder() {
@@ -805,13 +812,13 @@
             }
         }
         
-        // Simple form submission handler
+        // Contact form handling
         document.addEventListener('DOMContentLoaded', function() {
-            const form = document.querySelector('form[name="contact"]');
+            const form = document.getElementById('contact-form');
             const formMessage = document.getElementById('form-message');
             
             if (form) {
-                form.addEventListener('submit', function(e) {
+                form.addEventListener('submit', async function(e) {
                     e.preventDefault();
                     
                     const submitButton = form.querySelector('.btn-submit');
@@ -821,7 +828,7 @@
                     submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
                     submitButton.disabled = true;
                     
-                    // Simple form validation
+                    // Validate form
                     const inputs = form.querySelectorAll('input[required], textarea[required]');
                     let isValid = true;
                     
@@ -841,45 +848,6 @@
                         return;
                     }
                     
-                    // Submit form using Netlify Forms
-                    fetch('/', {
-                        method: 'POST',
-                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                        body: new URLSearchParams(new FormData(form)).toString()
-                    })
-                    .then(response => {
-                        if (response.ok) {
-                            showFormMessage('Message sent successfully! I\'ll get back to you soon.', 'success');
-                            form.reset();
-                        } else {
-                            throw new Error('Form submission failed');
-                        }
-                    })
-                    .catch(error => {
-                        showFormMessage('Failed to send message. Please try again or email me directly.', 'error');
-                        console.error('Form submission error:', error);
-                    })
-                    .finally(() => {
-                        submitButton.innerHTML = originalText;
-                        submitButton.disabled = false;
-                    });
-                });
-            }
-            
-            function showFormMessage(message, type) {
-                if (formMessage) {
-                    formMessage.textContent = message;
-                    formMessage.className = `form-message ${type}`;
-                    formMessage.style.display = 'block';
-                    
-                    if (type === 'success') {
-                        setTimeout(() => {
-                            formMessage.style.display = 'none';
-                        }, 5000);
-                    }
-                }
-            }
-        });
-    </script>
-</body>
-</html>
+                    try {
+                        // Submit to Formspree
+                       
