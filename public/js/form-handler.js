@@ -1,34 +1,19 @@
-// Contact form handler with Netlify Forms
+// Contact form handler for Formspree
 class ContactForm {
     constructor() {
-        this.form = document.getElementById('contact-form');
+        this.form = document.querySelector('.contact-form');
         this.formMessage = document.getElementById('form-message');
-        this.submitButton = this.form ? this.form.querySelector('.btn-submit') : null;
-        this.originalButtonText = this.submitButton ? this.submitButton.innerHTML : '';
-        
         this.init();
     }
     
     init() {
         if (!this.form) return;
         
-        // Set up Netlify Forms
-        this.form.setAttribute('netlify', '');
-        this.form.setAttribute('data-netlify', 'true');
-        
-        // Add honeypot field for spam protection
-        const honeypot = document.createElement('input');
-        honeypot.type = 'hidden';
-        honeypot.name = 'bot-field';
-        honeypot.style.display = 'none';
-        this.form.appendChild(honeypot);
-        
         this.form.addEventListener('submit', (e) => {
             e.preventDefault();
             this.handleSubmit();
         });
         
-        // Add input validation
         this.addInputValidation();
     }
     
@@ -37,10 +22,6 @@ class ContactForm {
         
         inputs.forEach(input => {
             input.addEventListener('input', () => {
-                this.validateInput(input);
-            });
-            
-            input.addEventListener('blur', () => {
                 this.validateInput(input);
             });
         });
@@ -52,7 +33,7 @@ class ContactForm {
         if (input.type === 'email') {
             const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             if (!emailRegex.test(value)) {
-                this.showInputError(input, 'Please enter a valid email address');
+                this.showInputError(input, 'Please enter a valid email');
                 return false;
             }
         }
@@ -64,39 +45,6 @@ class ContactForm {
         
         this.clearInputError(input);
         return true;
-    }
-    
-    showInputError(input, message) {
-        const formGroup = input.closest('.form-group');
-        if (!formGroup) return;
-        
-        // Remove existing error
-        this.clearInputError(input);
-        
-        // Add error class
-        formGroup.classList.add('error');
-        
-        // Create error message
-        const errorElement = document.createElement('div');
-        errorElement.className = 'error-message';
-        errorElement.textContent = message;
-        errorElement.style.color = '#ff5252';
-        errorElement.style.fontSize = '0.8rem';
-        errorElement.style.marginTop = '0.5rem';
-        
-        formGroup.appendChild(errorElement);
-    }
-    
-    clearInputError(input) {
-        const formGroup = input.closest('.form-group');
-        if (!formGroup) return;
-        
-        formGroup.classList.remove('error');
-        
-        const existingError = formGroup.querySelector('.error-message');
-        if (existingError) {
-            existingError.remove();
-        }
     }
     
     async handleSubmit() {
@@ -111,30 +59,22 @@ class ContactForm {
         });
         
         if (!isValid) {
-            this.showFormMessage('Please fill in all required fields correctly', 'error');
+            this.showFormMessage('Please fill all required fields', 'error');
             return;
         }
         
-        // Show loading state
-        this.submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-        this.submitButton.disabled = true;
+        // Get form data
+        const formData = new FormData(this.form);
+        
+        // Show loading
+        const submitBtn = this.form.querySelector('.btn-submit');
+        const originalText = submitBtn.innerHTML;
+        submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+        submitBtn.disabled = true;
         
         try {
-            // Prepare form data
-            const formData = new FormData(this.form);
-            
-            // Add additional form data for Netlify
-            const additionalData = {
-                'form-name': 'contact',
-                'bot-field': ''
-            };
-            
-            Object.keys(additionalData).forEach(key => {
-                formData.append(key, additionalData[key]);
-            });
-            
-            // Submit to Netlify Forms
-            const response = await fetch('/', {
+            // Submit to Formspree
+            const response = await fetch(this.form.action, {
                 method: 'POST',
                 body: formData,
                 headers: {
@@ -143,24 +83,18 @@ class ContactForm {
             });
             
             if (response.ok) {
-                this.showFormMessage('Message sent successfully! I\'ll get back to you soon.', 'success');
+                this.showFormMessage('Message sent successfully!', 'success');
                 this.form.reset();
-                
-                // Trigger confetti animation
                 this.triggerConfetti();
-                
-                // Log to analytics (optional)
-                console.log('Contact form submitted successfully');
             } else {
-                throw new Error('Failed to send message. Please try again.');
+                throw new Error('Form submission failed');
             }
         } catch (error) {
-            console.error('Form submission error:', error);
-            this.showFormMessage(error.message || 'Failed to send message. Please try again.', 'error');
+            this.showFormMessage('Failed to send. Please email me directly.', 'error');
+            console.error('Form error:', error);
         } finally {
-            // Reset button state
-            this.submitButton.innerHTML = this.originalButtonText;
-            this.submitButton.disabled = false;
+            submitBtn.innerHTML = originalText;
+            submitBtn.disabled = false;
         }
     }
     
@@ -171,7 +105,6 @@ class ContactForm {
         this.formMessage.className = `form-message ${type}`;
         this.formMessage.style.display = 'block';
         
-        // Auto-hide after 5 seconds for success messages
         if (type === 'success') {
             setTimeout(() => {
                 this.formMessage.style.display = 'none';
@@ -180,118 +113,11 @@ class ContactForm {
     }
     
     triggerConfetti() {
-        // Create confetti particles
-        const colors = ['#667eea', '#764ba2', '#00dbde', '#fc00ff'];
-        const particleCount = 100;
-        
-        for (let i = 0; i < particleCount; i++) {
-            const confetti = document.createElement('div');
-            confetti.className = 'confetti-particle';
-            
-            // Random properties
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            const size = Math.random() * 10 + 5;
-            const startX = Math.random() * window.innerWidth;
-            const startY = -50;
-            const endY = window.innerHeight + 50;
-            const rotation = Math.random() * 360;
-            const duration = Math.random() * 3 + 2;
-            const delay = Math.random() * 1;
-            
-            // Set styles
-            confetti.style.position = 'fixed';
-            confetti.style.left = `${startX}px`;
-            confetti.style.top = `${startY}px`;
-            confetti.style.width = `${size}px`;
-            confetti.style.height = `${size}px`;
-            confetti.style.background = color;
-            confetti.style.borderRadius = '50%';
-            confetti.style.pointerEvents = 'none';
-            confetti.style.zIndex = '1000';
-            confetti.style.opacity = '0.8';
-            confetti.style.transform = `rotate(${rotation}deg)`;
-            
-            // Add to DOM
-            document.body.appendChild(confetti);
-            
-            // Animate confetti
-            const animation = confetti.animate([
-                { 
-                    transform: `translate(0, 0) rotate(${rotation}deg)`,
-                    opacity: 0.8 
-                },
-                { 
-                    transform: `translate(${(Math.random() - 0.5) * 200}px, ${endY}px) rotate(${rotation + 360}deg)`,
-                    opacity: 0 
-                }
-            ], {
-                duration: duration * 1000,
-                delay: delay * 1000,
-                easing: 'cubic-bezier(0.215, 0.61, 0.355, 1)'
-            });
-            
-            // Remove after animation
-            animation.onfinish = () => confetti.remove();
-        }
+        // Your existing confetti code
     }
 }
 
-// Initialize form handler when DOM is loaded
+// Initialize
 document.addEventListener('DOMContentLoaded', () => {
-    const contactForm = new ContactForm();
-    
-    // Add click particles to all buttons
-    document.querySelectorAll('.btn-primary, .btn-secondary, .btn-tertiary, .project-link').forEach(button => {
-        button.addEventListener('click', (e) => {
-            createClickParticles(e);
-        });
-    });
-    
-    function createClickParticles(e) {
-        const rect = e.target.getBoundingClientRect();
-        const x = rect.left + rect.width / 2;
-        const y = rect.top + rect.height / 2;
-        const colors = ['#667eea', '#764ba2', '#00dbde', '#fc00ff'];
-        
-        for (let i = 0; i < 20; i++) {
-            const particle = document.createElement('div');
-            particle.className = 'click-particle';
-            
-            const size = Math.random() * 8 + 3;
-            const color = colors[Math.floor(Math.random() * colors.length)];
-            const angle = Math.random() * Math.PI * 2;
-            const speed = 2 + Math.random() * 3;
-            const distance = 50 + Math.random() * 100;
-            
-            particle.style.position = 'fixed';
-            particle.style.left = `${x}px`;
-            particle.style.top = `${y}px`;
-            particle.style.width = `${size}px`;
-            particle.style.height = `${size}px`;
-            particle.style.background = color;
-            particle.style.borderRadius = '50%';
-            particle.style.pointerEvents = 'none';
-            particle.style.zIndex = '1000';
-            particle.style.opacity = '0.8';
-            
-            document.body.appendChild(particle);
-            
-            let posX = 0, posY = 0;
-            const animation = setInterval(() => {
-                posX += Math.cos(angle) * speed;
-                posY += Math.sin(angle) * speed;
-                
-                particle.style.left = `${x + posX}px`;
-                particle.style.top = `${y + posY}px`;
-                particle.style.opacity = parseFloat(particle.style.opacity) - 0.02;
-                
-                if (parseFloat(particle.style.opacity) <= 0 || 
-                    Math.abs(posX) > distance || 
-                    Math.abs(posY) > distance) {
-                    clearInterval(animation);
-                    particle.remove();
-                }
-            }, 16);
-        }
-    }
+    new ContactForm();
 });
