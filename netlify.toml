@@ -3,7 +3,6 @@
   functions = "src"
 
 [build.environment]
-  # Set your Node.js version
   NODE_VERSION = "18"
 
 [[redirects]]
@@ -25,24 +24,12 @@
       style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com;
       font-src 'self' https://cdnjs.cloudflare.com https://fonts.gstatic.com;
       img-src 'self' data: https:;
-      connect-src 'self' https://api.netlify.com;
+      connect-src 'self';
     """
 
-# Environment variables (set these in Netlify dashboard)
+# Environment variables for Netlify Forms
 [context.production.environment]
-  SMTP_HOST = "smtp.gmail.com"
-  SMTP_PORT = "587"
-  SMTP_SECURE = "false"
-  SMTP_USER = "your-email@gmail.com"
-  SMTP_PASS = "your-app-password"
-  SMTP_FROM = "portfolio@patriceiradukunda.com"
   CONTACT_EMAIL = "patriceir27@gmail.com"
 
 [context.deploy-preview.environment]
-  SMTP_HOST = "smtp.gmail.com"
-  SMTP_PORT = "587"
-  SMTP_SECURE = "false"
-  SMTP_USER = "your-email@gmail.com"
-  SMTP_PASS = "your-app-password"
-  SMTP_FROM = "portfolio-preview@patriceiradukunda.com"
   CONTACT_EMAIL = "patriceir27@gmail.com"
