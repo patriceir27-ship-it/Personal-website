@@ -11,7 +11,6 @@
     <meta property="og:description" content="Turning raw data into intelligent systems, high-impact insights, and real-world solutions">
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://patriceiradukunda.netlify.app">
-    <meta property="og:image" content="https://patriceiradukunda.netlify.app/assets/Patrice.jpg">
     
     <!-- Fonts & Icons -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -95,7 +94,7 @@
                         <a href="#projects" class="btn-secondary">
                             <i class="fas fa-code"></i> View My Work
                         </a>
-                        <a href="cv/New version of CV-Patrice IRADUKUNDA Dec 2025.pdf" class="btn-tertiary" download target="_blank">
+                        <a href="New version of CV-Patrice IRADUKUNDA Dec 2025.pdf" class="btn-tertiary" download>
                             <i class="fas fa-download"></i> Download CV
                         </a>
                     </div>
@@ -109,7 +108,7 @@
                         <a href="mailto:patriceir27@gmail.com" class="social-icon">
                             <i class="fas fa-envelope"></i>
                         </a>
-                        <a href="cv/New version of CV-Patrice IRADUKUNDA Dec 2025.pdf" class="social-icon" download target="_blank">
+                        <a href="New version of CV-Patrice IRADUKUNDA Dec 2025.pdf" class="social-icon" download>
                             <i class="fas fa-file-pdf"></i>
                         </a>
                     </div>
@@ -122,7 +121,7 @@
                     </div>
                     <div class="profile-3d">
                         <div class="avatar-container">
-                            <img src="assets/Patrice.jpg" alt="Patrice IRADUKUNDA" class="profile-image" onerror="this.src='data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 200 200%22><rect width=%22200%22 height=%22200%22 fill=%22%23667eea%22/><text x=%22100%22 y=%22100%22 font-size=%2260%22 text-anchor=%22middle%22 dy=%22.3em%22 fill=%22white%22>PI</text></svg>'">
+                            <img src="Patrice.jpg" alt="Patrice IRADUKUNDA" class="profile-image" id="profile-img" onerror="showPlaceholder()">
                             <div class="profile-ring"></div>
                             <div class="profile-glow"></div>
                         </div>
@@ -141,8 +140,8 @@
                 <div class="about-left">
                     <div class="about-card">
                         <div class="about-image">
-                            <img src="assets/Patrice.jpg" alt="Patrice IRADUKUNDA" class="about-profile-image" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
-                            <div class="image-placeholder" style="display: none;">
+                            <img src="Patrice.jpg" alt="Patrice IRADUKUNDA" class="about-profile-image" id="about-profile-img" onerror="showAboutPlaceholder()">
+                            <div class="image-placeholder" id="about-placeholder" style="display: none;">
                                 <i class="fas fa-chart-line"></i>
                             </div>
                         </div>
@@ -217,81 +216,99 @@
                 <p class="section-subtitle">Professional Journey</p>
             </div>
             
-            <div class="timeline-3d">
-                <div class="timeline-track"></div>
-                
-                <!-- Experience Items -->
-                <div class="timeline-item left">
-                    <div class="timeline-content">
+            <div class="timeline-container">
+                <div class="timeline">
+                    <!-- Timeline Item 1 -->
+                    <div class="timeline-item">
                         <div class="timeline-date">Dec 2025 - Present</div>
-                        <h3 class="timeline-title">Data Scientist Intern</h3>
-                        <h4 class="timeline-company">Prodigy InfoTech | Remote</h4>
-                        <ul class="timeline-details">
-                            <li>Developed end-to-end data science and ML projects</li>
-                            <li>Built and evaluated ML models for classification/prediction</li>
-                            <li>Created clear visualizations and reports</li>
-                            <li>Strengthened skills in Python, SQL, and data storytelling</li>
-                        </ul>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Data Scientist Intern</h3>
+                            <h4 class="timeline-company">Prodigy InfoTech | Remote</h4>
+                            <ul class="timeline-details">
+                                <li>Developed end-to-end data science and ML projects</li>
+                                <li>Built and evaluated ML models for classification/prediction</li>
+                                <li>Created clear visualizations and reports</li>
+                                <li>Strengthened skills in Python, SQL, and data storytelling</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="timeline-item right">
-                    <div class="timeline-content">
+                    
+                    <!-- Timeline Item 2 -->
+                    <div class="timeline-item">
                         <div class="timeline-date">Dec 2024 - Aug 2025</div>
-                        <h3 class="timeline-title">Tutorial Assistant</h3>
-                        <h4 class="timeline-company">INES Ruhengeri</h4>
-                        <ul class="timeline-details">
-                            <li>Supported lecturers in lesson preparation</li>
-                            <li>Assisted in classroom instruction</li>
-                            <li>Monitored student progress</li>
-                            <li>Ensured child protection standards</li>
-                        </ul>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Tutorial Assistant</h3>
+                            <h4 class="timeline-company">INES Ruhengeri</h4>
+                            <ul class="timeline-details">
+                                <li>Supported lecturers in lesson preparation</li>
+                                <li>Assisted in classroom instruction</li>
+                                <li>Monitored student progress</li>
+                                <li>Ensured child protection standards</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="timeline-item left">
-                    <div class="timeline-content">
+                    
+                    <!-- Timeline Item 3 -->
+                    <div class="timeline-item">
                         <div class="timeline-date">May - Sept 2024</div>
-                        <h3 class="timeline-title">Internet Researcher & Content Creator</h3>
-                        <h4 class="timeline-company">Kawah Coffee Ltd, UK (Remote)</h4>
-                        <ul class="timeline-details">
-                            <li>Designed data collection methods</li>
-                            <li>Conducted online market research</li>
-                            <li>Created engaging content</li>
-                            <li>Monitored AI tools implementation</li>
-                        </ul>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Internet Researcher & Content Creator</h3>
+                            <h4 class="timeline-company">Kawah Coffee Ltd, UK (Remote)</h4>
+                            <ul class="timeline-details">
+                                <li>Designed data collection methods</li>
+                                <li>Conducted online market research</li>
+                                <li>Created engaging content</li>
+                                <li>Monitored AI tools implementation</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="timeline-item right">
-                    <div class="timeline-content">
+                    
+                    <!-- Timeline Item 4 -->
+                    <div class="timeline-item">
                         <div class="timeline-date">Feb - April 2024</div>
-                        <h3 class="timeline-title">Research Assistant & Data Analyst</h3>
-                        <h4 class="timeline-company">Conservation Heritage Turambe, Rwanda</h4>
-                        <ul class="timeline-details">
-                            <li>Supported research methodology design</li>
-                            <li>Managed data quality control</li>
-                            <li>Created reports and visualizations</li>
-                            <li>Analyzed research findings</li>
-                        </ul>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Research Assistant & Data Analyst</h3>
+                            <h4 class="timeline-company">Conservation Heritage Turambe, Rwanda</h4>
+                            <ul class="timeline-details">
+                                <li>Supported research methodology design</li>
+                                <li>Managed data quality control</li>
+                                <li>Created reports and visualizations</li>
+                                <li>Analyzed research findings</li>
+                            </ul>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="timeline-item left">
-                    <div class="timeline-content">
+                    
+                    <!-- Timeline Item 5 -->
+                    <div class="timeline-item">
+                        <div class="timeline-date">Summer 2023</div>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">District Super Admin</h3>
+                            <h4 class="timeline-company">LODA's Census, Musanze District</h4>
+                            <ul class="timeline-details">
+                                <li>Trained enumerators for effective data collection</li>
+                                <li>Managed Census system and ensured smooth data collection</li>
+                                <li>Resolved technical issues and maintained data quality</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Education -->
+                    <div class="timeline-item">
                         <div class="timeline-date">Sept 2025 - Jun 2026</div>
-                        <h3 class="timeline-title">Master's in Mathematical Science</h3>
-                        <h4 class="timeline-company">AIMS Rwanda</h4>
-                        <p>Specialization of Data Science</p>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">Master's in Data Science</h3>
+                            <h4 class="timeline-company">AIMS Rwanda</h4>
+                            <p class="timeline-details">Specialization in Mathematical Science for Data Science</p>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="timeline-item right">
-                    <div class="timeline-content">
+                    
+                    <div class="timeline-item">
                         <div class="timeline-date">Nov 2020 - Oct 2024</div>
-                        <h3 class="timeline-title">B.Sc. Statistics</h3>
-                        <h4 class="timeline-company">INES Ruhengeri</h4>
-                        <p>B.Sc in Statistics Applied to Economy</p>
+                        <div class="timeline-content">
+                            <h3 class="timeline-title">B.Sc. Statistics</h3>
+                            <h4 class="timeline-company">INES Ruhengeri</h4>
+                            <p class="timeline-details">B.Sc in Statistics Applied to Economy</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -458,90 +475,6 @@
                         </div>
                     </div>
                 </div>
-                
-                <!-- Domain Knowledge -->
-                <div class="skills-category">
-                    <h3 class="category-title">
-                        <i class="fas fa-industry"></i> Domain Knowledge
-                    </h3>
-                    <div class="domain-grid">
-                        <div class="domain-item">
-                            <i class="fas fa-phone-alt"></i>
-                            <span>Telecom Analytics</span>
-                        </div>
-                        <div class="domain-item">
-                            <i class="fas fa-money-bill-wave"></i>
-                            <span>Digital Finance</span>
-                        </div>
-                        <div class="domain-item">
-                            <i class="fas fa-chart-pie"></i>
-                            <span>Public Sector Analytics</span>
-                        </div>
-                        <div class="domain-item">
-                            <i class="fas fa-chart-line"></i>
-                            <span>Economic Statistics</span>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Soft Skills -->
-                <div class="skills-category">
-                    <h3 class="category-title">
-                        <i class="fas fa-users"></i> Soft Skills
-                    </h3>
-                    <div class="soft-skills">
-                        <div class="soft-skill">
-                            <div class="soft-skill-name">Analytical Thinking</div>
-                            <div class="soft-skill-dots">
-                                <span class="dot active"></span>
-                                <span class="dot active"></span>
-                                <span class="dot active"></span>
-                                <span class="dot active"></span>
-                                <span class="dot active"></span>
-                            </div>
-                        </div>
-                        <div class="soft-skill">
-                            <div class="soft-skill-name">Problem Solving</div>
-                            <div class="soft-skill-dots">
-                                <span class="dot active"></span>
-                                <span class="dot active"></span>
-                                <span class="dot active"></span>
-                                <span class="dot active"></span>
-                                <span class="dot active"></span>
-                            </div>
-                        </div>
-                        <div class="soft-skill">
-                            <div class="soft-skill-name">Communication</div>
-                            <div class="soft-skill-dots">
-                                <span class="dot active"></span>
-                                <span class="dot active"></span>
-                                <span class="dot active"></span>
-                                <span class="dot active"></span>
-                                <span class="dot"></span>
-                            </div>
-                        </div>
-                        <div class="soft-skill">
-                            <div class="soft-skill-name">Collaboration</div>
-                            <div class="soft-skill-dots">
-                                <span class="dot active"></span>
-                                <span class="dot active"></span>
-                                <span class="dot active"></span>
-                                <span class="dot active"></span>
-                                <span class="dot"></span>
-                            </div>
-                        </div>
-                        <div class="soft-skill">
-                            <div class="soft-skill-name">Research & Writing</div>
-                            <div class="soft-skill-dots">
-                                <span class="dot active"></span>
-                                <span class="dot active"></span>
-                                <span class="dot active"></span>
-                                <span class="dot active"></span>
-                                <span class="dot active"></span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
         </section>
 
@@ -643,7 +576,7 @@
                     </p>
                     <div class="project-tech">
                         <span>Python</span>
-                        <span>Seaborn</span>
+                                        <span>Seaborn</span>
                         <span>Matplotlib</span>
                     </div>
                     <div class="project-links">
@@ -699,31 +632,6 @@
                     <div class="project-links">
                         <a href="https://github.com/patriceir27-ship-it/Sentiment-Analysis-Public-Opinion-Mining-" target="_blank" class="project-link">
                             <i class="fab fa-github"></i> View Code
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Project 6 -->
-                <div class="project-card">
-                    <div class="project-header">
-                        <div class="project-icon">
-                            <i class="fas fa-robot"></i>
-                        </div>
-                        <div class="project-badge">ML Platform</div>
-                    </div>
-                    <h3 class="project-title">Large-Scale Education Analytics Platform</h3>
-                    <p class="project-description">
-                        Building a scalable analytics platform using Python, Spark, and MLlib 
-                        to analyze educational data and provide insights.
-                    </p>
-                    <div class="project-tech">
-                        <span>Python</span>
-                        <span>PySpark</span>
-                        <span>MLlib</span>
-                    </div>
-                    <div class="project-links">
-                        <a href="https://github.com/patriceir27-ship-it" target="_blank" class="project-link">
-                            <i class="fab fa-github"></i> GitHub
                         </a>
                     </div>
                 </div>
@@ -790,31 +698,38 @@
                 </div>
                 
                 <div class="contact-form-container">
-                    <form id="contact-form" class="contact-form" netlify>
+                    <!-- Simple Netlify Form -->
+                    <form name="contact" method="POST" data-netlify="true" class="contact-form">
+                        <input type="hidden" name="form-name" value="contact">
+                        
                         <h3 class="form-title">Send me a message</h3>
                         
                         <div class="form-group">
-                            <input type="text" id="name" name="name" required>
+                            <input type="text" id="name" name="name" required placeholder=" ">
                             <label for="name">Your Name</label>
                             <div class="form-line"></div>
                         </div>
                         
                         <div class="form-group">
-                            <input type="email" id="email" name="email" required>
+                            <input type="email" id="email" name="email" required placeholder=" ">
                             <label for="email">Your Email</label>
                             <div class="form-line"></div>
                         </div>
                         
                         <div class="form-group">
-                            <input type="text" id="subject" name="subject" required>
+                            <input type="text" id="subject" name="subject" required placeholder=" ">
                             <label for="subject">Subject</label>
                             <div class="form-line"></div>
                         </div>
                         
                         <div class="form-group">
-                            <textarea id="message" name="message" rows="4" required></textarea>
+                            <textarea id="message" name="message" rows="4" required placeholder=" "></textarea>
                             <label for="message">Your Message</label>
                             <div class="form-line"></div>
+                        </div>
+                        
+                        <div style="position: absolute; left: -5000px;" aria-hidden="true">
+                            <input type="text" name="bot-field" tabindex="-1">
                         </div>
                         
                         <button type="submit" class="btn-submit">
@@ -847,9 +762,6 @@
                 <a href="https://www.linkedin.com/in/patrice-iradukunda-74931827a/" target="_blank" class="footer-icon">
                     <i class="fab fa-linkedin"></i>
                 </a>
-                <a href="https://twitter.com" target="_blank" class="footer-icon">
-                    <i class="fab fa-twitter"></i>
-                </a>
                 <a href="mailto:patriceir27@gmail.com" class="footer-icon">
                     <i class="fas fa-envelope"></i>
                 </a>
@@ -873,7 +785,101 @@
     <!-- JavaScript Files -->
     <script src="js/threejs-setup.js"></script>
     <script src="js/animations.js"></script>
-    <script src="js/form-handler.js"></script>
     <script src="js/main.js"></script>
+    <script>
+        // Profile image handling
+        function showPlaceholder() {
+            const img = document.getElementById('profile-img');
+            const placeholder = document.createElement('div');
+            placeholder.className = 'avatar-placeholder';
+            placeholder.innerHTML = '<i class="fas fa-user-astronaut"></i>';
+            img.replaceWith(placeholder);
+        }
+        
+        function showAboutPlaceholder() {
+            const img = document.getElementById('about-profile-img');
+            const placeholder = document.getElementById('about-placeholder');
+            if (img && placeholder) {
+                img.style.display = 'none';
+                placeholder.style.display = 'flex';
+            }
+        }
+        
+        // Simple form submission handler
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.querySelector('form[name="contact"]');
+            const formMessage = document.getElementById('form-message');
+            
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const submitButton = form.querySelector('.btn-submit');
+                    const originalText = submitButton.innerHTML;
+                    
+                    // Show loading
+                    submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+                    submitButton.disabled = true;
+                    
+                    // Simple form validation
+                    const inputs = form.querySelectorAll('input[required], textarea[required]');
+                    let isValid = true;
+                    
+                    inputs.forEach(input => {
+                        if (!input.value.trim()) {
+                            isValid = false;
+                            input.style.borderBottomColor = '#ff5252';
+                        } else {
+                            input.style.borderBottomColor = '';
+                        }
+                    });
+                    
+                    if (!isValid) {
+                        showFormMessage('Please fill in all required fields', 'error');
+                        submitButton.innerHTML = originalText;
+                        submitButton.disabled = false;
+                        return;
+                    }
+                    
+                    // Submit form using Netlify Forms
+                    fetch('/', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                        body: new URLSearchParams(new FormData(form)).toString()
+                    })
+                    .then(response => {
+                        if (response.ok) {
+                            showFormMessage('Message sent successfully! I\'ll get back to you soon.', 'success');
+                            form.reset();
+                        } else {
+                            throw new Error('Form submission failed');
+                        }
+                    })
+                    .catch(error => {
+                        showFormMessage('Failed to send message. Please try again or email me directly.', 'error');
+                        console.error('Form submission error:', error);
+                    })
+                    .finally(() => {
+                        submitButton.innerHTML = originalText;
+                        submitButton.disabled = false;
+                    });
+                });
+            }
+            
+            function showFormMessage(message, type) {
+                if (formMessage) {
+                    formMessage.textContent = message;
+                    formMessage.className = `form-message ${type}`;
+                    formMessage.style.display = 'block';
+                    
+                    if (type === 'success') {
+                        setTimeout(() => {
+                            formMessage.style.display = 'none';
+                        }, 5000);
+                    }
+                }
+            }
+        });
+    </script>
 </body>
 </html>
